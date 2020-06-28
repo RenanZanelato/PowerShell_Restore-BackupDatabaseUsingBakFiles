@@ -2,8 +2,8 @@
 
 class Helper 
 {
-    [String]$Server="$env:computername";
-    #[String]$Server="$env:computername\SQLEXPRESS";
+    #[String]$Server="$env:computername";
+    [String]$Server="$env:computername\SQLEXPRESS";
     #If your SqlServer use SqlExpress, only change the coments 
     [String]$UID="$env:computername\$env:username";
     [System.Object[]] $BakFiles;

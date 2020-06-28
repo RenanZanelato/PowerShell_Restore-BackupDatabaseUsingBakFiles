@@ -25,6 +25,20 @@ class SqlStrings
          return $sqlString;
     }
 
+    [string] GetStringToShowAllDatabase()
+    {
+         $sqlString = $($this.GetSqlFile("ShowDatabases"));
+         $this.Messages.ShowMessageWarning($sqlString);
+        return $sqlString;
+    }
+    [string] GetStringToDoBackupAllDatabase([string] $bakFileName)
+    {
+         $sqlString = $($this.GetSqlFile("BackupFile"));
+         $sqlString = [string]::Format($sqlString, $bakFileName,$this.Helper.GetBakFolder()); 
+         $this.Messages.ShowMessageWarning($sqlString);
+         return $sqlString;
+    }
+
     [string] GetSqlFile([string]$LocalFile)
     {
        $this.Messages.ShowMessageStartingOk("Coletando SQL de $LocalFile");

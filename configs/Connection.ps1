@@ -12,13 +12,16 @@ class Connection
         $this.SqlConnection.ConnectionString = $this.ConnectionString;
  
     }
-    ExecuteQuery([string] $SQLQuery){
+   [System.Data.DataTable] ExecuteQuery([string] $SQLQuery){
         $this.SqlConnection.Open();
         $Command = New-Object System.Data.SQLClient.SQLCommand;
         $Command.Connection = $this.SqlConnection;
         $Command.CommandText = $SQLQuery;
         $Command.CommandTimeout = 1999;
-        $Command.ExecuteReader();
+        $Reader = $Command.ExecuteReader();
+        $Datatable = New-Object System.Data.DataTable
+        $DataTable.Load($Reader);
         $this.SqlConnection.Close();
+        return $DataTable;
     }
 }
