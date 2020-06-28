@@ -10,10 +10,6 @@ class Helper
     Helper(){
         $this.ScanBakDir();
     }
-    [string] GetUsersID()
-    {   
-        return "100084,100085,27372,27371,27370,27369,27368,27365,27364,27363";
-    }
     [string] GetFolder(){
         return (Get-Location).Path;
     }
